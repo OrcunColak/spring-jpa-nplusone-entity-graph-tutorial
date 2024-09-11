@@ -13,6 +13,7 @@ public interface AuthorRepository2 extends JpaRepository<Author, Long> {
     // See https://medium.com/jpa-java-persistence-api-guide/springdata-n-1-solution-with-namedentitygraph-8b101292261a
     // Use Spring EntityGraph
     // select a*,b.* from author a left join book b on a.id=b.author_id where a.id=?
+    // "author[books]" is the name of the @NamedEntityGraph
     @EntityGraph(value = "author[books]")
     Optional<Author> findById(Long authorId);
 
